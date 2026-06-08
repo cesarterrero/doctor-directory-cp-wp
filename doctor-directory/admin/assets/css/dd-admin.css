@@ -1,0 +1,372 @@
+/* =============================================================================
+   Doctor Directory — Admin Stylesheet
+   Complements WP Admin's existing styles; never overrides core WP classes.
+   ============================================================================= */
+
+/* ── Layout container ────────────────────────────────────────────────────── */
+.dd-wrap {
+    max-width: 1100px;
+}
+
+/* ── Search form ─────────────────────────────────────────────────────────── */
+.dd-search-input {
+    width: 300px;
+    max-width: 100%;
+    margin-right: 4px;
+}
+
+.dd-clear-search {
+    margin-left: 4px !important;
+    color: #b32d2e !important;
+    border-color: #b32d2e !important;
+}
+
+.dd-clear-search:hover {
+    background: #b32d2e !important;
+    color: #fff !important;
+}
+
+/* ── Stats bar ───────────────────────────────────────────────────────────── */
+.dd-stats-bar {
+    margin: 0 0 12px;
+    color: #50575e;
+    font-size: 13px;
+}
+
+/* ── Doctors table — column widths ──────────────────────────────────────── */
+.dd-doctors-table .column-name    { width: 20%; }
+.dd-doctors-table .column-email   { width: 22%; }
+.dd-doctors-table .column-address { width: 33%; }
+.dd-doctors-table .column-date    { width: 12%; }
+.dd-doctors-table .column-actions { width: 13%; }
+
+.dd-doctors-table .column-address {
+    white-space: pre-line; /* preserves line breaks entered in textarea */
+}
+
+/* ── Row hover state (reinforces WP's striped style) ────────────────────── */
+.dd-doctor-row:hover td {
+    background-color: #f0f6fc !important;
+}
+
+/* ── Action buttons inside table ─────────────────────────────────────────── */
+.dd-action-edit,
+.dd-action-delete {
+    margin-right: 4px !important;
+}
+
+.dd-action-delete {
+    color: #b32d2e !important;
+    border-color: #b32d2e !important;
+    background: transparent !important;
+    cursor: pointer;
+}
+
+.dd-action-delete:hover {
+    background: #b32d2e !important;
+    color: #fff !important;
+}
+
+/* ── Deleting state (set by JS while AJAX request is in flight) ──────────── */
+.dd-doctor-row.is-deleting {
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* ── Empty / no results row ──────────────────────────────────────────────── */
+.dd-no-results td {
+    padding: 24px !important;
+    text-align: center;
+    color: #50575e;
+    font-style: italic;
+}
+
+/* ── Form table ──────────────────────────────────────────────────────────── */
+.dd-form-table th {
+    width: 200px;
+    padding-top: 16px;
+}
+
+.dd-required {
+    color: #b32d2e;
+    margin-left: 2px;
+}
+
+/* ── Input error state ───────────────────────────────────────────────────── */
+.dd-input-error {
+    border-color: #b32d2e !important;
+    box-shadow: 0 0 0 1px #b32d2e !important;
+}
+
+/* ── Inline error messages (shown by jQuery Validate + PHP fallback) ─────── */
+.dd-error-msg {
+    display: block;
+    color: #b32d2e;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 18px; /* prevents layout shift when message appears/disappears */
+    font-weight: 500;
+}
+
+/* ── Form actions row ────────────────────────────────────────────────────── */
+.dd-form-actions {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.dd-cancel-btn {
+    color: #50575e !important;
+}
+
+/* ── Submit feedback (spinner + success message shown by JS) ─────────────── */
+.dd-submit-feedback {
+    font-size: 13px;
+    color: #50575e;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dd-submit-feedback.is-loading::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #ddd;
+    border-top-color: #2271b1;
+    border-radius: 50%;
+    animation: dd-spin 0.6s linear infinite;
+}
+
+.dd-submit-feedback.is-success {
+    color: #00a32a;
+    font-weight: 500;
+}
+
+@keyframes dd-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Delete confirmation page ────────────────────────────────────────────── */
+.dd-confirm-box {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-top: 4px solid #b32d2e;
+    border-radius: 0 0 4px 4px;
+    padding: 24px 28px;
+    max-width: 600px;
+    margin-top: 16px;
+}
+
+.dd-confirm-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.dd-confirm-title {
+    font-size: 18px;
+    margin: 0 0 12px;
+    color: #1d2327;
+}
+
+.dd-confirm-details {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+}
+
+.dd-confirm-details th,
+.dd-confirm-details td {
+    padding: 8px 12px;
+    border: 1px solid #e2e4e7;
+    text-align: left;
+}
+
+.dd-confirm-details th {
+    background: #f6f7f7;
+    width: 120px;
+    font-weight: 600;
+}
+
+.dd-confirm-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+/* ── Danger button variant ───────────────────────────────────────────────── */
+.button.dd-btn-danger,
+.button-primary.dd-btn-danger {
+    background: #b32d2e !important;
+    border-color: #b32d2e !important;
+    color: #fff !important;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.25) !important;
+}
+
+.button.dd-btn-danger:hover,
+.button-primary.dd-btn-danger:hover {
+    background: #8f2222 !important;
+    border-color: #8f2222 !important;
+}
+
+/* ── AJAX Delete modal ───────────────────────────────────────────────────── */
+.dd-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dd-modal[hidden] {
+    display: none;
+}
+
+.dd-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.dd-modal-box {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    border-top: 4px solid #b32d2e;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    animation: dd-modal-in 0.18s ease;
+}
+
+@keyframes dd-modal-in {
+    from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+}
+
+.dd-modal-box h2 {
+    margin: 0 0 12px;
+    font-size: 17px;
+    color: #1d2327;
+}
+
+.dd-modal-box p {
+    color: #50575e;
+    margin: 0 0 20px;
+    line-height: 1.6;
+}
+
+.dd-modal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+#dd-modal-feedback {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #50575e;
+    min-height: 20px;
+}
+
+/* ── Live search highlight ───────────────────────────────────────────────── */
+.dd-highlight {
+    background: #fff3cd;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+/* ── Fade-out animation (row removed after AJAX delete) ─────────────────── */
+.dd-row-removing {
+    animation: dd-fade-out 0.35s ease forwards;
+}
+
+@keyframes dd-fade-out {
+    from { opacity: 1; transform: scaleY(1); }
+    to   { opacity: 0; transform: scaleY(0); height: 0; padding: 0; }
+}
+
+/* ── Character counter (below full_name field) ───────────────────────────── */
+.dd-char-counter {
+    display: block;
+    font-size: 11px;
+    color: #8c8f94;
+    margin-top: 2px;
+}
+
+.dd-char-counter.dd-counter-warn {
+    color: #d63638;
+    font-weight: 500;
+}
+
+/* ── Valid input state (subtle green border after passing validation) ─────── */
+.dd-input-valid {
+    border-color: #00a32a !important;
+    box-shadow: 0 0 0 1px #00a32a !important;
+}
+
+/* ── Inline notice injected by JS after AJAX operations ─────────────────── */
+.dd-dynamic-notice {
+    margin-top: 12px;
+}
+
+/* ── Column widths ───────────────────────────────────────────────────────── */
+.dd-doctors-table .column-name    { width: 20%; }
+.dd-doctors-table .column-email   { width: 22%; }
+.dd-doctors-table .column-address { width: 30%; }
+.dd-doctors-table .column-status  { width: 10%; }
+.dd-doctors-table .column-actions { width: 18%; }
+
+/* ── Status badge ────────────────────────────────────────────────────────── */
+.dd-status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.dd-status-active   { background: #d1f0da; color: #1a7a35; }
+.dd-status-inactive { background: #f0f0f0; color: #888; }
+
+/* ── Fila inactiva atenuada ──────────────────────────────────────────────── */
+.dd-row-inactive td        { opacity: 0.5; }
+.dd-row-inactive:hover td  { opacity: 1; transition: opacity .15s; }
+
+/* ── Row actions (Deactivate | Delete como links debajo del botón Edit) ──── */
+.dd-row-actions {
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dd-link-action {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 12px;
+    color: #2271b1;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.dd-link-action:hover  { color: #135e96; text-decoration: underline; }
+.dd-link-danger        { color: #b32d2e !important; }
+.dd-link-danger:hover  { color: #8f2222 !important; }
+
+.dd-sep {
+    color: #ccc;
+    font-size: 11px;
+    user-select: none;
+}
