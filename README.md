@@ -30,4 +30,4 @@ Nonces on all forms, parameterized queries via `$wpdb->prepare()`, input sanitiz
 
 ## Author
 
-Cesar Bolivar — [linkedin.com/in/cesarbolivardev](https://linkedin.com/in/cesarbolivardev)
+Cesar Bolivar — [linkedin.com/in/cesarbolivardev](https://www.linkedin.com/in/cesarbolivar-dev)
