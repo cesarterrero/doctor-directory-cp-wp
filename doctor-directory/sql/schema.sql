@@ -1,9 +1,7 @@
--- ============================================================
+
 -- Doctor Directory - Database Schema v1.0.0
--- ============================================================
--- Replace "wp_" with your actual table prefix if different.
--- This table is created automatically when the plugin activates.
--- ============================================================
+
+
 
 CREATE TABLE `wp_dd_doctors` (
   `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -18,9 +16,8 @@ CREATE TABLE `wp_dd_doctors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- ============================================================
 -- Sample data
--- ============================================================
+
 
 INSERT INTO `wp_dd_doctors` (`full_name`, `email`, `address`, `status`) VALUES
 ('Dr. Carlos Méndez Reyes',   'carlos.mendez@clinicasanar.com.do',  'Av. Winston Churchill 1099, Piantini, Santo Domingo',    1),
@@ -30,17 +27,3 @@ INSERT INTO `wp_dd_doctors` (`full_name`, `email`, `address`, `status`) VALUES
 ('Dr. Antonio Jiménez Peña',  'ajimenez@medicaribe.com.do',         'Calle Duarte 34, Santiago de los Caballeros',            1);
 
 
--- ============================================================
--- ER Diagram
---
---   wp_dd_doctors
---   +-------------+--------------+
---   | id          | INT PK AI    |
---   | full_name   | VARCHAR(150) |
---   | email       | VARCHAR(255) | UNIQUE
---   | address     | TEXT         |
---   | status      | TINYINT(1)   | DEFAULT 1
---   | created_at  | DATETIME     |
---   | updated_at  | DATETIME     |
---   +-------------+--------------+
--- ============================================================
